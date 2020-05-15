@@ -19,7 +19,7 @@ class ModelCard{
             
             //Ensure that the random numnber isn't one we already have
             if generatedNmubersArray.contains(Int(randomNumber)) == false{
-        
+                
                 // Store the number into the generatedNumberArray
                 generatedNmubersArray.append(Int(randomNumber))
                 //create the first card

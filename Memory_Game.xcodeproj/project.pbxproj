@@ -63,12 +63,12 @@
 				212F86E3245DBBCB0023891A /* AppDelegate.swift */,
 				212F86E5245DBBCB0023891A /* SceneDelegate.swift */,
 				212F86E7245DBBCB0023891A /* ViewController.swift */,
+				212F86F7245DCE960023891A /* Card.swift */,
+				21A90069245DDC8900796908 /* CardCollectionViewCell.swift */,
 				212F86E9245DBBCB0023891A /* Main.storyboard */,
 				212F86EC245DBBCD0023891A /* Assets.xcassets */,
 				212F86EE245DBBCD0023891A /* LaunchScreen.storyboard */,
 				212F86F1245DBBCD0023891A /* Info.plist */,
-				212F86F7245DCE960023891A /* Card.swift */,
-				21A90069245DDC8900796908 /* CardCollectionViewCell.swift */,
 			);
 			path = Memory_Game;
 			sourceTree = "<group>";

@@ -45,8 +45,8 @@ class CardCollectionViewCell: UICollectionViewCell {
     func filp(){
         
         UIView.transition(from: self.backImageView, to: self.frontImageview, duration: 0.3, options: [.transitionFlipFromRight,.showHideTransitionViews], completion: nil)
-            
-
+        
+        
     }
     
     func flipBack(){
@@ -62,9 +62,7 @@ class CardCollectionViewCell: UICollectionViewCell {
     func remove(){
         
         //Remove both imageviews from being visible
-        
         backImageView.alpha=0
-        
         UIView.animate(withDuration: 0.3, delay: 0.9, options: .curveEaseOut, animations: {
             self.frontImageview.alpha=0
             

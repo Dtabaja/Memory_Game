@@ -192,7 +192,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
             
         }else{
-        
+            
             //set the status of the cards
             cardOne.isFlipped = false
             cardTwo.isFlipped=false
