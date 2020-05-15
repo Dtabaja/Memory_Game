@@ -14,26 +14,27 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBOutlet weak var timerLabel: UILabel!
     
-       
+    @IBOutlet weak var StepsCounter: UILabel!
+    
     var model = ModelCard()
     var myCardArray = [Card]()
     
     var firstFlippedCardIndex:IndexPath?
     
     var timer:Timer?
-    var miliseconds:Float = 30000// 30 Seconds
+    var miliseconds:Float = 60000//  60 Seconds
     
     var numberOfMoves:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         //call the getCard method from ModelCard Class
         myCardArray = model.getCards()
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        
         
         timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(timerElapsed), userInfo: nil, repeats: true)
         
@@ -44,25 +45,22 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-   /* func movesIncreasing(){
-        numberOfMoves+=1
-        numberOfMovesLabel.text = "Number of Moves:\(numberOfMoves)"
-    }*/
+    
     //MARK: Timer Method
     
     @objc func timerElapsed(){
         
         miliseconds -= 1
         
-    //Convert to seconds
+        //Convert to seconds
         
-    let seconds = String(format: "%.2f", miliseconds/1000)
+        let seconds = String(format: "%.2f", miliseconds/1000)
         
-    //Set label
+        //Set label
         
-    timerLabel.text = "Time Remaining: \(seconds)"
+        timerLabel.text = "Time Remaining: \(seconds)"
         
-    //when the timer reaches 0
+        //when the timer reaches 0
         if miliseconds <= 0{
             //Stop the timer
             timer?.invalidate()
@@ -74,14 +72,30 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         
     }
+    func movesIncreasing(){
+        numberOfMoves+=1
+        StepsCounter.text = "Number of Moves:\(numberOfMoves)"
+    }
     
     
     
-
-    //  MARK: UICollcetionView Protocol Methods
+    //  MARK: UICollcetionView  Methods
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return myCardArray.count
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let noOfCellsInrow = 4
+        
+        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+        
+        let totalSpace = flowLayout.sectionInset.left
+            + flowLayout.sectionInset.right
+            + (flowLayout.minimumLineSpacing*CGFloat(noOfCellsInrow-1))
+        let size = Int((collectionView.bounds.width - totalSpace)/CGFloat(noOfCellsInrow))
+        
+        return CGSize(width: size, height: size)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -94,9 +108,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         //set that card for the cell
         cell.setCard(card)
+        cell.backgroundColor = .white
         
         return cell
     }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
@@ -105,22 +122,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
             return
         }
-  
-//        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//            let noOfCellsInRow = 4
-//
-//            let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-//
-//            let totalSpace = flowLayout.sectionInset.left
-//                + flowLayout.sectionInset.right
-//                + (flowLayout.minimumInteritemSpacing * CGFloat(noOfCellsInRow - 1))
-//
-//            let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(noOfCellsInRow))
-//
-//            return CGSize(width: size, height: size)
-//        }
-
+        
+        
+        
+        
+        
+        
         //Get the cell that the user selected
         let cell = collectionView.cellForItem(at: indexPath) as! CardCollectionViewCell
         
@@ -131,19 +138,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
             //Flip the card
             cell.filp()
+            movesIncreasing()
             //set the status of the card
             card.isFlipped=true
-          //  movesIncreasing()
+            
             
             //Determine if its the first card or the second card
             
             if firstFlippedCardIndex==nil{
                 //this if the firsy card being flipped
                 firstFlippedCardIndex = indexPath
-            //    movesIncreasing()
-                
             }else{
-            //This is the second card
+                //This is the second card
                 checkForMatches(indexPath)
                 
                 
@@ -152,7 +158,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }//End the didSelectIemAt Method
     
-  //  Mark:- Game Logic Method
+    //  Mark:- Game Logic Method
     func checkForMatches(_ secondFlippedCardIndex: IndexPath){
         //Get the cells for the two that were revaled
         
@@ -186,8 +192,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
             
         }else{
-            //it's not a macth
-            
+        
             //set the status of the cards
             cardOne.isFlipped = false
             cardTwo.isFlipped=false
@@ -215,9 +220,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         for card in myCardArray{
             if card.isMatched==false{
-            isWon = false
-            break
-        }
+                isWon = false
+                break
+            }
         }
         //messaging alerts
         
@@ -234,7 +239,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             message = "You've Won"
             
         }else{
-        //if there are unmayced cards, check if there is any time left
+            //if there are unmatched cards, check if there is any time left
             if miliseconds>0{
                 return
             }
@@ -259,5 +264,4 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     
-}//End ViewControllerClass
-
+}

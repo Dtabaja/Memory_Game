@@ -5,11 +5,7 @@ class CardCollectionViewCell: UICollectionViewCell {
     
     
     @IBOutlet weak var frontImageview: UIImageView!
-    
-    
     @IBOutlet weak var backImageView: UIImageView!
-    
-    
     
     var card:Card?
     
@@ -32,8 +28,6 @@ class CardCollectionViewCell: UICollectionViewCell {
             //If the card has not been matched, then make the image view visible
             self.backImageView.alpha = 1
             self.frontImageview.alpha = 1
-         
-            
         }
         
         //Determine if the card is in Filpped up state or flipped down state
@@ -51,6 +45,7 @@ class CardCollectionViewCell: UICollectionViewCell {
     func filp(){
         
         UIView.transition(from: self.backImageView, to: self.frontImageview, duration: 0.3, options: [.transitionFlipFromRight,.showHideTransitionViews], completion: nil)
+            
 
     }
     
