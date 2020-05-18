@@ -108,7 +108,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         //set that card for the cell
         cell.setCard(card)
-        cell.backgroundColor = .white
+        //cell.backgroundColor = .white
         
         return cell
     }
