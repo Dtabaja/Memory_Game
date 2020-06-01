@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tXw-lU-SHu">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -13,14 +13,14 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Memory_Game" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background_world" translatesAutoresizingMaskIntoConstraints="NO" id="Nkr-LY-9Us">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Tu9-nK-Mgs">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Remaining:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FaN-Gn-4Rz">
                                         <rect key="frame" x="112" y="0.0" width="190" height="30"/>
@@ -45,7 +45,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="580-nA-wLp">
-                                        <rect key="frame" x="0.0" y="60" width="414" height="758"/>
+                                        <rect key="frame" x="0.0" y="60" width="414" height="748"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="ebp-VV-2mO">
                                             <size key="itemSize" width="100" height="100"/>
@@ -106,6 +106,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="JVf-WY-UZS"/>
                     <connections>
                         <outlet property="StepsCounter" destination="lUg-Dq-72z" id="dMA-yg-huQ"/>
                         <outlet property="collectionView" destination="580-nA-wLp" id="GEb-gY-oW2"/>
@@ -114,7 +115,80 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="121"/>
+            <point key="canvasLocation" x="265" y="-190"/>
+        </scene>
+        <!--Welcome View Controller-->
+        <scene sceneID="H9R-1d-xVV">
+            <objects>
+                <viewController id="tXw-lU-SHu" customClass="WelcomeViewController" customModule="Memory_Game" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ejN-Qt-G1v" customClass="Welcome">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background_world" translatesAutoresizingMaskIntoConstraints="NO" id="kPX-GP-RBp">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SyL-PT-0Tv">
+                                <rect key="frame" x="127" y="360" width="160" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="7Vc-Zy-aEb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="52"/>
+                                <state key="normal" title="Play">
+                                    <color key="titleColor" red="0.22885416197932332" green="0.40221056967102098" blue="0.92227979274611394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.6408473509" green="0.96662360430000005" blue="0.50343976310000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="ClickView:" destination="tXw-lU-SHu" eventType="touchUpInside" id="qIC-TI-U9K"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Welcome" textAlignment="center" minimumFontSize="57" translatesAutoresizingMaskIntoConstraints="NO" id="dDd-gc-v14">
+                                <rect key="frame" x="74" y="101" width="266" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="gcu-2U-Epw"/>
+                                </constraints>
+                                <color key="textColor" red="0.6408473508794118" green="0.96662360430000005" blue="0.50343976310837457" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="74"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u79-9i-jyd">
+                                <rect key="frame" x="99" y="449" width="200" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Yba-BB-kg1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="52"/>
+                                <state key="normal" title="Top Ten">
+                                    <color key="titleColor" red="0.92227979270000005" green="0.37048552262562284" blue="0.42633130013851722" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="u79-9i-jyd" firstAttribute="centerX" secondItem="SyL-PT-0Tv" secondAttribute="centerX" constant="-8" id="7Ko-Uw-cOd"/>
+                            <constraint firstItem="dDd-gc-v14" firstAttribute="top" secondItem="oY8-Si-ixd" secondAttribute="top" constant="57" id="9NU-qA-tKI"/>
+                            <constraint firstItem="kPX-GP-RBp" firstAttribute="bottom" secondItem="ejN-Qt-G1v" secondAttribute="bottom" id="BBa-us-557"/>
+                            <constraint firstItem="kPX-GP-RBp" firstAttribute="top" secondItem="ejN-Qt-G1v" secondAttribute="top" id="Cwf-yP-7Ki"/>
+                            <constraint firstItem="u79-9i-jyd" firstAttribute="leading" secondItem="SyL-PT-0Tv" secondAttribute="leading" constant="-28" id="PIZ-Ai-dAt"/>
+                            <constraint firstItem="SyL-PT-0Tv" firstAttribute="centerX" secondItem="dDd-gc-v14" secondAttribute="centerX" id="ST7-wg-OEs"/>
+                            <constraint firstItem="SyL-PT-0Tv" firstAttribute="centerX" secondItem="kPX-GP-RBp" secondAttribute="centerX" id="Sh1-Qr-0FT"/>
+                            <constraint firstItem="kPX-GP-RBp" firstAttribute="trailing" secondItem="oY8-Si-ixd" secondAttribute="trailing" id="WZs-xp-LG2"/>
+                            <constraint firstItem="u79-9i-jyd" firstAttribute="leading" secondItem="oY8-Si-ixd" secondAttribute="leading" constant="99" id="Ym1-4c-mm0"/>
+                            <constraint firstItem="kPX-GP-RBp" firstAttribute="leading" secondItem="ejN-Qt-G1v" secondAttribute="leading" id="Ymu-dr-DPj"/>
+                            <constraint firstItem="oY8-Si-ixd" firstAttribute="bottom" secondItem="u79-9i-jyd" secondAttribute="bottom" constant="313" id="hPv-5Q-ZJy"/>
+                            <constraint firstItem="dDd-gc-v14" firstAttribute="leading" secondItem="oY8-Si-ixd" secondAttribute="leading" constant="74" id="klb-QU-Sx3"/>
+                            <constraint firstItem="u79-9i-jyd" firstAttribute="top" secondItem="SyL-PT-0Tv" secondAttribute="bottom" constant="42" id="uJG-zY-dJM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oY8-Si-ixd"/>
+                    </view>
+                    <connections>
+                        <outlet property="PlayButton" destination="SyL-PT-0Tv" id="R4b-Fo-Ddh"/>
+                        <outlet property="topTenButton" destination="u79-9i-jyd" id="WgV-hF-YIo"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="play" id="naC-w1-yCs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HYl-GC-KxD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-546.37681159420299" y="-190.17857142857142"/>
         </scene>
     </scenes>
     <resources>

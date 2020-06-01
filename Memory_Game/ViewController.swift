@@ -22,7 +22,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var firstFlippedCardIndex:IndexPath?
     
     var timer:Timer?
-    var miliseconds:Float = 60000//  60 Seconds
+    
+    var miliseconds:Float = 0
     
     var numberOfMoves:Int = 0
     
@@ -50,7 +51,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @objc func timerElapsed(){
         
-        miliseconds -= 1
+        miliseconds += 1
         
         //Convert to seconds
         
@@ -61,15 +62,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         timerLabel.text = "Time Remaining: \(seconds)"
         
         //when the timer reaches 0
-        if miliseconds <= 0{
-            //Stop the timer
-            timer?.invalidate()
-            timerLabel.textColor = UIColor.red
-            
-            //Check if there are any cards unmatched
-            checkGameEnded()
-            
-        }
+//        if miliseconds <= 0{
+//            //Stop the timer
+//            timer?.invalidate()
+//            timerLabel.textColor = UIColor.red
+//
+//            //Check if there are any cards unmatched
+//            checkGameEnded()
+//
+//        }
         
     }
     func movesIncreasing(){
@@ -108,7 +109,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         //set that card for the cell
         cell.setCard(card)
-        //cell.backgroundColor = .white
+        
         
         return cell
     }
@@ -231,25 +232,27 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         //if not - then user has won - stop the timer
         if isWon==true{
-            if miliseconds>0{
-                timer?.invalidate()
-                
-            }
+//            if miliseconds>0{
+//                timer?.invalidate()
+//
+//            }
             title = "Congratulations!"
             message = "You've Won"
             
-        }else{
-            //if there are unmatched cards, check if there is any time left
-            if miliseconds>0{
-                return
-            }
-            title = "Game Over!"
-            message = "You've Lost"
             
-        }
+//        }else{
+//            //if there are unmatched cards, check if there is any time left
+//            if miliseconds>0{
+//                return
+//            }
+//            title = "Game Over!"
+//            message = "You've Lost"
+//
+//       }
         //show won/lost messaging
         showAlert(title, message)
-        
+            timer?.invalidate()
+        }
     }
     func showAlert(_ title:String, _ message:String){
         
