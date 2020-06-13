@@ -23,7 +23,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var timer:Timer?
     
-    var miliseconds:Float = 0
+    var miliseconds:Double = 0
     
     var numberOfMoves:Int = 0
     
