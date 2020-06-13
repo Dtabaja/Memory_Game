@@ -73,6 +73,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 //        }
         
     }
+     //MARK: Move Increasing Method
     func movesIncreasing(){
         numberOfMoves+=1
         StepsCounter.text = "Number of Moves:\(numberOfMoves)"
@@ -80,84 +81,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     
     
-    //  MARK: UICollcetionView  Methods
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return myCardArray.count
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let noOfCellsInrow = 4
-        
-        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-        
-        let totalSpace = flowLayout.sectionInset.left
-            + flowLayout.sectionInset.right
-            + (flowLayout.minimumLineSpacing*CGFloat(noOfCellsInrow-1))
-        let size = Int((collectionView.bounds.width - totalSpace)/CGFloat(noOfCellsInrow))
-        
-        return CGSize(width: size, height: size)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        //get a card collection view cell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: indexPath) as! CardCollectionViewCell
-        
-        //get the card that the collection view is trying to dispaly
-        let card = myCardArray[indexPath.row]
-        
-        //set that card for the cell
-        cell.setCard(card)
-        
-        
-        return cell
-    }
-    
-    
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        //Check if there is any time left
-        if miliseconds<=0{
-            
-            return
-        }
-        
-        
-        
-        
-        
-        
-        //Get the cell that the user selected
-        let cell = collectionView.cellForItem(at: indexPath) as! CardCollectionViewCell
-        
-        //Get the card that the user selected
-        let card = myCardArray[indexPath.row]
-        
-        if card.isFlipped==false &&  card.isMatched==false {
-            
-            //Flip the card
-            cell.filp()
-            movesIncreasing()
-            //set the status of the card
-            card.isFlipped=true
-            
-            
-            //Determine if its the first card or the second card
-            
-            if firstFlippedCardIndex==nil{
-                //this if the firsy card being flipped
-                firstFlippedCardIndex = indexPath
-            }else{
-                //This is the second card
-                checkForMatches(indexPath)
-                
-                
-            }
-            
-        }
-    }//End the didSelectIemAt Method
     
     //  Mark:- Game Logic Method
     func checkForMatches(_ secondFlippedCardIndex: IndexPath){
@@ -259,12 +182,86 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let alertAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        let alertAction = UIAlertAction(title: "New Game", style: .default, handler: nil)
         
         alert.addAction(alertAction)
         
         present(alert, animated: true, completion: nil)
     }
-    
+   
+    //  MARK: UICollcetionView  Methods
+       
+       func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+           return myCardArray.count
+       }
+       func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                           sizeForItemAt indexPath: IndexPath) -> CGSize {
+           let noOfCellsInrow = 4
+           
+           let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+           
+           let totalSpace = flowLayout.sectionInset.left
+               + flowLayout.sectionInset.right
+               + (flowLayout.minimumLineSpacing*CGFloat(noOfCellsInrow-1))
+           let size = Int((collectionView.bounds.width - totalSpace)/CGFloat(noOfCellsInrow))
+           
+           return CGSize(width: size, height: size)
+       }
+       
+       func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+           
+           //get a card collection view cell
+           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: indexPath) as! CardCollectionViewCell
+           
+           //get the card that the collection view is trying to dispaly
+           let card = myCardArray[indexPath.row]
+           
+           //set that card for the cell
+           cell.setCard(card)
+           
+           
+           return cell
+       }
+       
+       
+       
+       func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+           
+           //Check if there is any time left
+           if miliseconds<=0{
+               
+               return
+           }
+           
+                   
+           //Get the cell that the user selected
+           let cell = collectionView.cellForItem(at: indexPath) as! CardCollectionViewCell
+           
+           //Get the card that the user selected
+           let card = myCardArray[indexPath.row]
+           
+           if card.isFlipped==false &&  card.isMatched==false {
+               
+               //Flip the card
+               cell.filp()
+               movesIncreasing()
+               //set the status of the card
+               card.isFlipped=true
+               
+               
+               //Determine if its the first card or the second card
+               
+               if firstFlippedCardIndex==nil{
+                   //this if the firsy card being flipped
+                   firstFlippedCardIndex = indexPath
+               }else{
+                   //This is the second card
+                   checkForMatches(indexPath)
+                   
+                   
+               }
+               
+           }
+       }   //End the didSelectIemAt Method
     
 }

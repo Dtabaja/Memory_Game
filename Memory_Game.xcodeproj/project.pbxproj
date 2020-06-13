@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2109870D248258A600BC1690 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2109870C248258A600BC1690 /* Card.swift */; };
 		21098711248271A700BC1690 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21098710248271A700BC1690 /* WelcomeViewController.swift */; };
+		21195A28248FDDFC00C05C1E /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21195A27248FDDFC00C05C1E /* ScoreViewController.swift */; };
 		212F86E4245DBBCB0023891A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F86E3245DBBCB0023891A /* AppDelegate.swift */; };
 		212F86E6245DBBCB0023891A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F86E5245DBBCB0023891A /* SceneDelegate.swift */; };
 		212F86E8245DBBCB0023891A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F86E7245DBBCB0023891A /* ViewController.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		2109870C248258A600BC1690 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		21098710248271A700BC1690 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		21195A27248FDDFC00C05C1E /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 		212F86E0245DBBCB0023891A /* Memory_Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memory_Game.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		212F86E3245DBBCB0023891A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		212F86E5245DBBCB0023891A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				212F86E5245DBBCB0023891A /* SceneDelegate.swift */,
 				21098710248271A700BC1690 /* WelcomeViewController.swift */,
 				212F86E7245DBBCB0023891A /* ViewController.swift */,
+				21195A27248FDDFC00C05C1E /* ScoreViewController.swift */,
 				212F86F7245DCE960023891A /* ModelCard.swift */,
 				2109870C248258A600BC1690 /* Card.swift */,
 				21A90069245DDC8900796908 /* CardCollectionViewCell.swift */,
@@ -157,6 +160,7 @@
 				212F86E4245DBBCB0023891A /* AppDelegate.swift in Sources */,
 				21A9006A245DDC8900796908 /* CardCollectionViewCell.swift in Sources */,
 				212F86E6245DBBCB0023891A /* SceneDelegate.swift in Sources */,
+				21195A28248FDDFC00C05C1E /* ScoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

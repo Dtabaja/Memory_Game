@@ -106,7 +106,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="JVf-WY-UZS"/>
                     <connections>
                         <outlet property="StepsCounter" destination="lUg-Dq-72z" id="dMA-yg-huQ"/>
                         <outlet property="collectionView" destination="580-nA-wLp" id="GEb-gY-oW2"/>
@@ -160,6 +159,9 @@
                                 <state key="normal" title="Top Ten">
                                     <color key="titleColor" red="0.92227979270000005" green="0.37048552262562284" blue="0.42633130013851722" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="ClickViewTopTen:" destination="tXw-lU-SHu" eventType="touchUpInside" id="sNo-m5-scz"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -184,11 +186,33 @@
                         <outlet property="PlayButton" destination="SyL-PT-0Tv" id="R4b-Fo-Ddh"/>
                         <outlet property="topTenButton" destination="u79-9i-jyd" id="WgV-hF-YIo"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="play" id="naC-w1-yCs"/>
+                        <segue destination="YXp-sd-m4s" kind="presentation" identifier="TopTen" id="mjG-Bb-vU7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HYl-GC-KxD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-546.37681159420299" y="-190.17857142857142"/>
+        </scene>
+        <!--Score View Controller-->
+        <scene sceneID="TkJ-fG-lHQ">
+            <objects>
+                <viewController id="YXp-sd-m4s" customClass="ScoreViewController" customModule="Memory_Game" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RSZ-s3-sx7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background_world" translatesAutoresizingMaskIntoConstraints="NO" id="OCp-8Z-Dwe">
+                                <rect key="frame" x="0.0" y="-27" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="TfC-OM-tTy"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5AY-wK-4uR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="94" y="538"/>
         </scene>
     </scenes>
     <resources>
