@@ -270,6 +270,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TfC-OM-tTy"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="7Jl-LH-fZp" id="foV-qe-xmT"/>
+                        <outlet property="tableView" destination="Tfl-Yt-c4b" id="xnW-42-S68"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5AY-wK-4uR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

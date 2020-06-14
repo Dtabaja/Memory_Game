@@ -1,30 +1,29 @@
-//
-//  ScoreViewController.swift
-//  Memory_Game
-//
-//  Created by user167528 on 6/9/20.
-//  Copyright © 2020 user167528. All rights reserved.
-//
+
 
 import UIKit
+import MapKit
 
 class ScoreViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var mapView: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
+
     
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+}
 
+extension UITableViewDelegate{
+    
+    
+}
+
+extension UITableViewDataSource{
+    
+    
 }

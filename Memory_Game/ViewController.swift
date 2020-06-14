@@ -5,11 +5,11 @@
 //  Created by user167528 on 5/2/20.
 //  Copyright © 2020 user167528. All rights reserved.
 //
-
+import CoreLocation
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate
+{
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var timerLabel: UILabel!
@@ -18,14 +18,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var model = ModelCard()
     var myCardArray = [Card]()
-    
     var firstFlippedCardIndex:IndexPath?
-    
     var timer:Timer?
-    
     var miliseconds:Double = 0
-    
     var numberOfMoves:Int = 0
+    var locationManager :CLLocationManager!
+    var highScoreCellUtil = HighScoreCellUtil()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,14 +36,23 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView.dataSource = self
         
         timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(timerElapsed), userInfo: nil, repeats: true)
-        
         RunLoop.main.add(timer!, forMode: .common)
-        
+        location()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    //MARK: Location Premissions
+    func location(){
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+        
+    }
+    
     
     //MARK: Timer Method
     
@@ -62,18 +69,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         timerLabel.text = "Time Remaining: \(seconds)"
         
         //when the timer reaches 0
-//        if miliseconds <= 0{
-//            //Stop the timer
-//            timer?.invalidate()
-//            timerLabel.textColor = UIColor.red
-//
-//            //Check if there are any cards unmatched
-//            checkGameEnded()
-//
-//        }
+        //        if miliseconds <= 0{
+        //            //Stop the timer
+        //            timer?.invalidate()
+        //            timerLabel.textColor = UIColor.red
+        //
+        //            //Check if there are any cards unmatched
+        //            checkGameEnded()
+        //
+        //        }
         
     }
-     //MARK: Move Increasing Method
+    //MARK: Move Increasing Method
     func movesIncreasing(){
         numberOfMoves+=1
         StepsCounter.text = "Number of Moves:\(numberOfMoves)"
@@ -155,25 +162,25 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         //if not - then user has won - stop the timer
         if isWon==true{
-//            if miliseconds>0{
-//                timer?.invalidate()
-//
-//            }
+            //            if miliseconds>0{
+            //                timer?.invalidate()
+            //
+            //            }
             title = "Congratulations!"
             message = "You've Won"
             
             
-//        }else{
-//            //if there are unmatched cards, check if there is any time left
-//            if miliseconds>0{
-//                return
-//            }
-//            title = "Game Over!"
-//            message = "You've Lost"
-//
-//       }
-        //show won/lost messaging
-        showAlert(title, message)
+            //        }else{
+            //            //if there are unmatched cards, check if there is any time left
+            //            if miliseconds>0{
+            //                return
+            //            }
+            //            title = "Game Over!"
+            //            message = "You've Lost"
+            //
+            //       }
+            //show won/lost messaging
+            showAlert(title, message)
             timer?.invalidate()
         }
     }
@@ -188,80 +195,93 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         present(alert, animated: true, completion: nil)
     }
-   
+    
     //  MARK: UICollcetionView  Methods
-       
-       func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-           return myCardArray.count
-       }
-       func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                           sizeForItemAt indexPath: IndexPath) -> CGSize {
-           let noOfCellsInrow = 4
-           
-           let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-           
-           let totalSpace = flowLayout.sectionInset.left
-               + flowLayout.sectionInset.right
-               + (flowLayout.minimumLineSpacing*CGFloat(noOfCellsInrow-1))
-           let size = Int((collectionView.bounds.width - totalSpace)/CGFloat(noOfCellsInrow))
-           
-           return CGSize(width: size, height: size)
-       }
-       
-       func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-           
-           //get a card collection view cell
-           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: indexPath) as! CardCollectionViewCell
-           
-           //get the card that the collection view is trying to dispaly
-           let card = myCardArray[indexPath.row]
-           
-           //set that card for the cell
-           cell.setCard(card)
-           
-           
-           return cell
-       }
-       
-       
-       
-       func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-           
-           //Check if there is any time left
-           if miliseconds<=0{
-               
-               return
-           }
-           
-                   
-           //Get the cell that the user selected
-           let cell = collectionView.cellForItem(at: indexPath) as! CardCollectionViewCell
-           
-           //Get the card that the user selected
-           let card = myCardArray[indexPath.row]
-           
-           if card.isFlipped==false &&  card.isMatched==false {
-               
-               //Flip the card
-               cell.filp()
-               movesIncreasing()
-               //set the status of the card
-               card.isFlipped=true
-               
-               
-               //Determine if its the first card or the second card
-               
-               if firstFlippedCardIndex==nil{
-                   //this if the firsy card being flipped
-                   firstFlippedCardIndex = indexPath
-               }else{
-                   //This is the second card
-                   checkForMatches(indexPath)
-                   
-                   
-               }
-               
-           }
-       }   //End the didSelectIemAt Method
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return myCardArray.count
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let noOfCellsInrow = 4
+        
+        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+        
+        let totalSpace = flowLayout.sectionInset.left
+            + flowLayout.sectionInset.right
+            + (flowLayout.minimumLineSpacing*CGFloat(noOfCellsInrow-1))
+        let size = Int((collectionView.bounds.width - totalSpace)/CGFloat(noOfCellsInrow))
+        
+        return CGSize(width: size, height: size)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        //get a card collection view cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: indexPath) as! CardCollectionViewCell
+        
+        //get the card that the collection view is trying to dispaly
+        let card = myCardArray[indexPath.row]
+        
+        //set that card for the cell
+        cell.setCard(card)
+        
+        
+        return cell
+    }
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        //Check if there is any time left
+        if miliseconds<=0{
+            
+            return
+        }
+        
+        
+        //Get the cell that the user selected
+        let cell = collectionView.cellForItem(at: indexPath) as! CardCollectionViewCell
+        
+        //Get the card that the user selected
+        let card = myCardArray[indexPath.row]
+        
+        if card.isFlipped==false &&  card.isMatched==false {
+            
+            //Flip the card
+            cell.filp()
+            movesIncreasing()
+            //set the status of the card
+            card.isFlipped=true
+            
+            
+            //Determine if its the first card or the second card
+            
+            if firstFlippedCardIndex==nil{
+                //this if the firsy card being flipped
+                firstFlippedCardIndex = indexPath
+            }else{
+                //This is the second card
+                checkForMatches(indexPath)
+                
+                
+            }
+            
+        }
+    }   //End the didSelectIemAt Method
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            locationManager.stopUpdatingLocation()
+            let lat = location.coordinate.latitude
+            let lon = location.coordinate.longitude
+            self.highScoreCellUtil.latitude = lat
+            self.highScoreCellUtil.logitude = lon
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error in location: \(error)")
+    }
     
 }

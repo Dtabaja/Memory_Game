@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HighScoreTable: Codable{
+class HighScoreCellUtil: Codable{
     
     var timer: Double = 0.0
     var dateOfGame:String = ""
@@ -16,22 +16,23 @@ class HighScoreTable: Codable{
     var latitude:Double = 0
     
     
+    init(){}
     
     init(timer:Double){
         self.timer = timer
-        self.dateOfGame = createDate()
+        createDate()
         
         
         
     }
-    func createDate()->String{
+    func createDate(){
         let now = Date()
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         formatter.timeStyle = .medium
         formatter.locale = .current
         self.dateOfGame = formatter.string(from: now)
-        return dateOfGame
+       
     }
     
 }
