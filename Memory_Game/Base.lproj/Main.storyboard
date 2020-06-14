@@ -96,8 +96,8 @@
                                     <constraint firstAttribute="bottom" secondItem="580-nA-wLp" secondAttribute="bottom" id="qlt-PQ-gtN"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hE9-ei-Vq8">
-                                <rect key="frame" x="0.0" y="0.0" width="64" height="37"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hE9-ei-Vq8">
+                                <rect key="frame" x="0.0" y="0.0" width="64" height="42"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="&lt;Back">
@@ -363,6 +363,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="77w-m9-NKd"/>
-        <segue reference="pNB-8F-Igh"/>
+        <segue reference="okh-yB-Q4t"/>
     </inferredMetricsTieBreakers>
 </document>
