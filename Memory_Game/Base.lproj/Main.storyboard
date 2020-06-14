@@ -130,20 +130,20 @@
             <objects>
                 <viewController id="tXw-lU-SHu" customClass="WelcomeViewController" customModule="Memory_Game" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ejN-Qt-G1v" customClass="Welcome">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background_world" translatesAutoresizingMaskIntoConstraints="NO" id="kPX-GP-RBp">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Welcome" textAlignment="center" minimumFontSize="57" translatesAutoresizingMaskIntoConstraints="NO" id="dDd-gc-v14">
-                                <rect key="frame" x="75" y="44" width="264" height="81"/>
+                                <rect key="frame" x="75" y="0.0" width="264" height="81"/>
                                 <color key="textColor" red="0.6408473508794118" green="0.96662360430000005" blue="0.50343976310837457" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="74"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="Z22-OS-nby">
-                                <rect key="frame" x="111.5" y="324" width="191" height="248"/>
+                                <rect key="frame" x="111.5" y="297" width="191" height="248"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SyL-PT-0Tv">
                                         <rect key="frame" x="0.0" y="0.0" width="191" height="74"/>
@@ -273,16 +273,38 @@
                                 </subviews>
                                 <variation key="heightClass=compact-widthClass=regular" alignment="fill" axis="horizontal"/>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vFB-2X-FeE">
+                                <rect key="frame" x="0.0" y="0.0" width="64" height="42"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="&lt;Back">
+                                            <attributes>
+                                                <color key="NSColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="22" name="Avenir-Black"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="clickedBack:" destination="YXp-sd-m4s" eventType="touchUpInside" id="SSv-Pl-kKf"/>
+                                    <segue destination="tXw-lU-SHu" kind="showDetail" identifier="BackToMain" id="pNB-8F-Igh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="TfC-OM-tTy" firstAttribute="bottom" secondItem="GY6-tl-ujy" secondAttribute="bottom" constant="10" id="07P-pY-5XW"/>
+                            <constraint firstItem="TfC-OM-tTy" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vFB-2X-FeE" secondAttribute="trailing" symbolic="YES" id="8eU-BQ-kVM"/>
+                            <constraint firstItem="vFB-2X-FeE" firstAttribute="leading" secondItem="TfC-OM-tTy" secondAttribute="leading" id="DOX-lD-qwc"/>
                             <constraint firstItem="14d-h9-NTS" firstAttribute="top" secondItem="TfC-OM-tTy" secondAttribute="top" id="FDc-hS-hR2"/>
+                            <constraint firstItem="vFB-2X-FeE" firstAttribute="leading" secondItem="TfC-OM-tTy" secondAttribute="leading" id="Gc7-AI-h4B"/>
                             <constraint firstItem="OCp-8Z-Dwe" firstAttribute="centerX" secondItem="RSZ-s3-sx7" secondAttribute="centerX" id="IWf-Dg-MfK"/>
                             <constraint firstItem="OCp-8Z-Dwe" firstAttribute="leading" secondItem="TfC-OM-tTy" secondAttribute="leading" id="Iuj-LR-8YT"/>
                             <constraint firstItem="TfC-OM-tTy" firstAttribute="trailing" secondItem="GY6-tl-ujy" secondAttribute="trailing" constant="10" id="KV6-eP-frS"/>
                             <constraint firstItem="14d-h9-NTS" firstAttribute="leading" secondItem="TfC-OM-tTy" secondAttribute="leading" id="Lhe-ZP-XI1"/>
+                            <constraint firstItem="vFB-2X-FeE" firstAttribute="top" secondItem="TfC-OM-tTy" secondAttribute="top" id="Y0s-Qc-klP"/>
                             <constraint firstItem="GY6-tl-ujy" firstAttribute="leading" secondItem="TfC-OM-tTy" secondAttribute="leading" constant="10" id="YQy-jr-bS8"/>
+                            <constraint firstItem="vFB-2X-FeE" firstAttribute="top" secondItem="TfC-OM-tTy" secondAttribute="top" id="l8T-f9-ixt"/>
                             <constraint firstItem="GY6-tl-ujy" firstAttribute="top" secondItem="14d-h9-NTS" secondAttribute="bottom" constant="10" id="tnn-91-713"/>
                             <constraint firstItem="TfC-OM-tTy" firstAttribute="trailing" secondItem="14d-h9-NTS" secondAttribute="trailing" id="vvR-Eq-NDx"/>
                             <constraint firstItem="OCp-8Z-Dwe" firstAttribute="centerY" secondItem="RSZ-s3-sx7" secondAttribute="centerY" id="xYu-CM-jdd"/>
@@ -290,7 +312,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TfC-OM-tTy"/>
                     </view>
+                    <navigationItem key="navigationItem" id="UTL-9O-Nxb"/>
                     <connections>
+                        <outlet property="Back_BTN" destination="vFB-2X-FeE" id="VSi-Rk-WvQ"/>
                         <outlet property="mapView" destination="7Jl-LH-fZp" id="foV-qe-xmT"/>
                         <outlet property="tableView" destination="Tfl-Yt-c4b" id="xnW-42-S68"/>
                     </connections>
@@ -305,6 +329,6 @@
         <image name="Background_world" width="888" height="1600"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="77w-m9-NKd"/>
+        <segue reference="mjG-Bb-vU7"/>
     </inferredMetricsTieBreakers>
 </document>

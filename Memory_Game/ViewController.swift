@@ -89,7 +89,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     
     
-    //  Mark:- Game Logic Method
+    //MARK: Game Logic Method
     func checkForMatches(_ secondFlippedCardIndex: IndexPath){
         //Get the cells for the two that were revaled
         
@@ -155,32 +155,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 break
             }
         }
-        //messaging alerts
+       
         
-        var title = ""
-        var message = ""
-        
-        //if not - then user has won - stop the timer
         if isWon==true{
-            //            if miliseconds>0{
-            //                timer?.invalidate()
-            //
-            //            }
-            title = "Congratulations!"
-            message = "You've Won"
             
-            
-            //        }else{
-            //            //if there are unmatched cards, check if there is any time left
-            //            if miliseconds>0{
-            //                return
-            //            }
-            //            title = "Game Over!"
-            //            message = "You've Lost"
-            //
-            //       }
-            //show won/lost messaging
-         //   showAlert(title, message)
             timer?.invalidate()
             updateScoreOnTable()
             performSegue(withIdentifier: "FromGameToToepTen", sender: self)
@@ -197,17 +175,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             vc.highScoreCell = self.highScoreCell
         }
     }
-    func showAlert(_ title:String, _ message:String){
-        
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        let alertAction = UIAlertAction(title: "New Game", style: .default, handler: nil)
-        
-        alert.addAction(alertAction)
-        
-        present(alert, animated: true, completion: nil)
-    }
+   
     
     //  MARK: UICollcetionView  Methods
     
@@ -283,6 +251,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
         }
     }   //End the didSelectIemAt Method
+    //MARK: LocationManager
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             locationManager.stopUpdatingLocation()

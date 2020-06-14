@@ -19,16 +19,12 @@ class WelcomeViewController: UIViewController {
     
     @IBAction func ClickView(_ sender: Any) {
         self.performSegue(withIdentifier: "play", sender: self)
-       //let secondView = ViewController()
-        print("Daniel")
+      
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let backItem = UIBarButtonItem()
-        backItem.title = "<Back"
-        navigationItem.backBarButtonItem = backItem
         
         if (segue.identifier=="play") {
             _ = segue.destination as! ViewController

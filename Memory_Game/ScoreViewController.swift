@@ -6,6 +6,7 @@ import MapKit
 class ScoreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
 
+    @IBOutlet weak var Back_BTN: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
     
@@ -21,13 +22,16 @@ class ScoreViewController: UIViewController, UITableViewDataSource, UITableViewD
         showHighScoreTable()
     }
     
-    //MARK - location annotation on map
+    //MARK: location annotation on map
     func showLocation(){
         for score in highScoreList{
             locationOfPlayerScore(highScoreCell:score)
+            print(highScoreList.count)
         }
-        
+       
     }
+
+    
     func locationOfPlayerScore(highScoreCell:HighScoreCellUtil){
             let pointAnnotaion = MKPointAnnotation()
             pointAnnotaion.coordinate = CLLocationCoordinate2D.init(latitude: highScoreCell.latitude, longitude: highScoreCell.logitude)
@@ -38,7 +42,7 @@ class ScoreViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         
     }
-    //MARK Delegate & DataSource Functions
+    //MARK: Delegate & DataSource Functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return highScoreList.count
     }
@@ -62,7 +66,7 @@ class ScoreViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         
     }
-    //MARK - UserDefaults Functions
+    //MARK: UserDefaults Functions
     func readFromUserDF()-> [HighScoreCellUtil]{
         if let data = UserDefaults.standard.data(forKey: dataID){
         do{
@@ -93,6 +97,7 @@ class ScoreViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         
     }
+    //MARK: appand and update score list
     func appendToHighScoreList(highScoreCell:HighScoreCellUtil){
         if(highScoreList.count<10){
             self.highScoreList.append(highScoreCell)
@@ -112,9 +117,20 @@ class ScoreViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
 
+    @IBAction func clickedBack(_ sender: Any) {
+        self.performSegue(withIdentifier: "BackToMain", sender: self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+    
+    if (segue.identifier=="BackToMain") {
+        _ = segue.destination as! WelcomeViewController
+    
+    }
+}
 }
 
-//MARK - Inner Class
+//MARK: Inner Class
 class HighScoreTableViewCell: UITableViewCell{
     
     @IBOutlet weak var time_Label: UILabel!
