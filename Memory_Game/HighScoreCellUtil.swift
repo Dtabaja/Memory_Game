@@ -20,18 +20,18 @@ class HighScoreCellUtil: Codable{
     
     init(timer:Double){
         self.timer = timer
-        createDate()
+        self.dateOfGame =  createDate()
         
         
         
     }
-    func createDate(){
+    func createDate()-> String{
         let now = Date()
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         formatter.timeStyle = .medium
         formatter.locale = .current
-        self.dateOfGame = formatter.string(from: now)
+        return formatter.string(from: now)
        
     }
     

@@ -23,7 +23,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var miliseconds:Double = 0
     var numberOfMoves:Int = 0
     var locationManager :CLLocationManager!
-    var highScoreCellUtil = HighScoreCellUtil()
+    var highScoreCell = HighScoreCellUtil()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -180,8 +180,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             //
             //       }
             //show won/lost messaging
-            showAlert(title, message)
+         //   showAlert(title, message)
             timer?.invalidate()
+            updateScoreOnTable()
+            performSegue(withIdentifier: "FromGameToToepTen", sender: self)
+        }
+    }
+    func updateScoreOnTable(){
+        self.highScoreCell.timer = miliseconds
+        self.highScoreCell.dateOfGame = highScoreCell.createDate()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier=="FromGameToToepTen"){
+            let vc = segue.destination as! ScoreViewController
+            vc.highScoreCell = self.highScoreCell
         }
     }
     func showAlert(_ title:String, _ message:String){
@@ -201,20 +214,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return myCardArray.count
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let noOfCellsInrow = 4
-        
-        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-        
-        let totalSpace = flowLayout.sectionInset.left
-            + flowLayout.sectionInset.right
-            + (flowLayout.minimumLineSpacing*CGFloat(noOfCellsInrow-1))
-        let size = Int((collectionView.bounds.width - totalSpace)/CGFloat(noOfCellsInrow))
-        
-        return CGSize(width: size, height: size)
-    }
-    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+//                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let noOfCellsInrow = 4
+//
+//        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+//
+//        let totalSpace = flowLayout.sectionInset.left
+//            + flowLayout.sectionInset.right
+//            + (flowLayout.minimumLineSpacing*CGFloat(noOfCellsInrow-1))
+//        let size = Int((collectionView.bounds.width - totalSpace)/CGFloat(noOfCellsInrow))
+//
+//        return CGSize(width: size, height: size)
+//    }
+//
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         //get a card collection view cell
@@ -275,8 +288,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             locationManager.stopUpdatingLocation()
             let lat = location.coordinate.latitude
             let lon = location.coordinate.longitude
-            self.highScoreCellUtil.latitude = lat
-            self.highScoreCellUtil.logitude = lon
+            self.highScoreCell.latitude = lat
+            self.highScoreCell.logitude = lon
         }
     }
     

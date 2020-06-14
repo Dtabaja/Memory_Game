@@ -38,19 +38,19 @@ class ModelCard{
         
         
         //Randomize an array
-        for i in 0...genearatedCardsArray.count-1 {
-            let randomNumber = Int(arc4random_uniform(UInt32(genearatedCardsArray.count)))
-            
-            //swap the cards
-            let temporary = genearatedCardsArray[i]
-            genearatedCardsArray[i] = genearatedCardsArray[randomNumber]
-            genearatedCardsArray[randomNumber] = temporary
-        }
-        //Return an array
+//        for i in 0...genearatedCardsArray.count-1 {
+//            let randomNumber = Int(arc4random_uniform(UInt32(genearatedCardsArray.count)))
+//
+//            //swap the cards
+//            let temporary = genearatedCardsArray[i]
+//            genearatedCardsArray[i] = genearatedCardsArray[randomNumber]
+//            genearatedCardsArray[randomNumber] = temporary
+//        }
+//        //Return an array
         return genearatedCardsArray
-        
-        
-        
+//
+//
+//
     }
     
 }
