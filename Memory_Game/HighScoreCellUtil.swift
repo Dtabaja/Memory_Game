@@ -10,7 +10,7 @@ import Foundation
 
 class HighScoreCellUtil: Codable{
     
-    var timer: Double = 0.0
+    var timer: Int = 0
     var dateOfGame:String = ""
     var logitude:Double = 0
     var latitude:Double = 0
@@ -18,7 +18,7 @@ class HighScoreCellUtil: Codable{
     
     init(){}
     
-    init(timer:Double){
+    init(timer:Int){
         self.timer = timer
         self.dateOfGame =  createDate()
         

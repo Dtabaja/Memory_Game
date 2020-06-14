@@ -32,7 +32,9 @@ class ScoreViewController: UIViewController, UITableViewDataSource, UITableViewD
             let pointAnnotaion = MKPointAnnotation()
             pointAnnotaion.coordinate = CLLocationCoordinate2D.init(latitude: highScoreCell.latitude, longitude: highScoreCell.logitude)
             mapView.addAnnotation(pointAnnotaion)
-            pointAnnotaion.title = String(highScoreCell.timer)
+            let seconds = String(format:"%02d", (highScoreCell.timer % 60))
+            let minutes = String(format:"%02d", (highScoreCell.timer / 60))
+            pointAnnotaion.title = "\(minutes):\(seconds)"
         
         
     }
@@ -44,7 +46,9 @@ class ScoreViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "HighScoreCell") as?HighScoreTableViewCell
-        cell?.time_Label.text = String(highScoreList[indexPath.row].timer)
+        let seconds = String(format:"%02d", (highScoreList[indexPath.row].timer % 60))
+        let minutes = String(format:"%02d", (highScoreList[indexPath.row].timer / 60))
+        cell?.time_Label.text = "\(minutes):\(seconds)"
         cell?.date_Label.text = String(highScoreList[indexPath.row].dateOfGame)
         showLocation()
         return cell!

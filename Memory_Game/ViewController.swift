@@ -20,7 +20,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var myCardArray = [Card]()
     var firstFlippedCardIndex:IndexPath?
     var timer:Timer?
-    var miliseconds:Double = 0
+    var miliseconds:Int = 0
     var numberOfMoves:Int = 0
     var locationManager :CLLocationManager!
     var highScoreCell = HighScoreCellUtil()
@@ -35,7 +35,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(timerElapsed), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerElapsed), userInfo: nil, repeats: true)
         RunLoop.main.add(timer!, forMode: .common)
         location()
     }
@@ -62,11 +62,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         //Convert to seconds
         
-        let seconds = String(format: "%.2f", miliseconds/1000)
-        
+        let seconds = String(format: "%.2d", miliseconds%60)
+        let minutes = String(format: "%.2d",miliseconds/60)
         //Set label
         
-        timerLabel.text = "Time Remaining: \(seconds)"
+        timerLabel.text = "Timer: \(minutes):\(seconds)"
         
         //when the timer reaches 0
         //        if miliseconds <= 0{
