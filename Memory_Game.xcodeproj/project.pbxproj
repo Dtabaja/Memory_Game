@@ -52,6 +52,7 @@
 		212F86D7245DBBCB0023891A = {
 			isa = PBXGroup;
 			children = (
+				21CE375A24968D2100DA28A3 /* HighScore */,
 				21CF3E822495201200320ACA /* Card */,
 				212F86E2245DBBCB0023891A /* Memory_Game */,
 				212F86E1245DBBCB0023891A /* Products */,
@@ -72,9 +73,6 @@
 				212F86E3245DBBCB0023891A /* AppDelegate.swift */,
 				212F86E5245DBBCB0023891A /* SceneDelegate.swift */,
 				21098710248271A700BC1690 /* WelcomeViewController.swift */,
-				212F86E7245DBBCB0023891A /* ViewController.swift */,
-				21195A27248FDDFC00C05C1E /* ScoreViewController.swift */,
-				21CF3E832495276100320ACA /* HighScoreCellUtil.swift */,
 				212F86E9245DBBCB0023891A /* Main.storyboard */,
 				212F86EC245DBBCD0023891A /* Assets.xcassets */,
 				212F86EE245DBBCD0023891A /* LaunchScreen.storyboard */,
@@ -83,12 +81,22 @@
 			path = Memory_Game;
 			sourceTree = "<group>";
 		};
+		21CE375A24968D2100DA28A3 /* HighScore */ = {
+			isa = PBXGroup;
+			children = (
+				21195A27248FDDFC00C05C1E /* ScoreViewController.swift */,
+				21CF3E832495276100320ACA /* HighScoreCellUtil.swift */,
+			);
+			path = HighScore;
+			sourceTree = "<group>";
+		};
 		21CF3E822495201200320ACA /* Card */ = {
 			isa = PBXGroup;
 			children = (
 				212F86F7245DCE960023891A /* ModelCard.swift */,
 				2109870C248258A600BC1690 /* Card.swift */,
 				21A90069245DDC8900796908 /* CardCollectionViewCell.swift */,
+				212F86E7245DBBCB0023891A /* ViewController.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
