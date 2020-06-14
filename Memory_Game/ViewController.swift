@@ -156,7 +156,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 break
             }
         }
-       
+        
         
         if isWon==true{
             
@@ -175,9 +175,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             let vc = segue.destination as! ScoreViewController
             vc.highScoreCell = self.highScoreCell
             if (segue.identifier=="BackToMainFromGame") {
-                     _ = segue.destination as! WelcomeViewController
-                 
-                 }
+                _ = segue.destination as! WelcomeViewController
+                
+            }
             
         }
         
@@ -190,8 +190,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.performSegue(withIdentifier: "BackToMainFromGame", sender: self)
     }
     
-      
-
+    
+    
     
     
     //  MARK: UICollcetionView  Methods
@@ -199,20 +199,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return myCardArray.count
     }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-//                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let noOfCellsInrow = 4
-//
-//        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-//
-//        let totalSpace = flowLayout.sectionInset.left
-//            + flowLayout.sectionInset.right
-//            + (flowLayout.minimumLineSpacing*CGFloat(noOfCellsInrow-1))
-//        let size = Int((collectionView.bounds.width - totalSpace)/CGFloat(noOfCellsInrow))
-//
-//        return CGSize(width: size, height: size)
-//    }
-//
+    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+    //                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+    //        let noOfCellsInrow = 4
+    //
+    //        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+    //
+    //        let totalSpace = flowLayout.sectionInset.left
+    //            + flowLayout.sectionInset.right
+    //            + (flowLayout.minimumLineSpacing*CGFloat(noOfCellsInrow-1))
+    //        let size = Int((collectionView.bounds.width - totalSpace)/CGFloat(noOfCellsInrow))
+    //
+    //        return CGSize(width: size, height: size)
+    //    }
+    //
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         //get a card collection view cell

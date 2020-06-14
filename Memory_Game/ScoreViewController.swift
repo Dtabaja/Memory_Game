@@ -4,8 +4,8 @@ import UIKit
 import MapKit
 
 class ScoreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
-
+    
+    
     @IBOutlet weak var Back_BTN: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
@@ -29,17 +29,17 @@ class ScoreViewController: UIViewController, UITableViewDataSource, UITableViewD
             locationOfPlayerScore(highScoreCell:score)
             print(highScoreList.count)
         }
-       
+        
     }
-
+    
     
     func locationOfPlayerScore(highScoreCell:HighScoreCellUtil){
-            let pointAnnotaion = MKPointAnnotation()
-            pointAnnotaion.coordinate = CLLocationCoordinate2D.init(latitude: highScoreCell.latitude, longitude: highScoreCell.logitude)
-            mapView.addAnnotation(pointAnnotaion)
-            let seconds = String(format:"%02d", (highScoreCell.timer % 60))
-            let minutes = String(format:"%02d", (highScoreCell.timer / 60))
-            pointAnnotaion.title = "\(minutes):\(seconds)"
+        let pointAnnotaion = MKPointAnnotation()
+        pointAnnotaion.coordinate = CLLocationCoordinate2D.init(latitude: highScoreCell.latitude, longitude: highScoreCell.logitude)
+        mapView.addAnnotation(pointAnnotaion)
+        let seconds = String(format:"%02d", (highScoreCell.timer % 60))
+        let minutes = String(format:"%02d", (highScoreCell.timer / 60))
+        pointAnnotaion.title = "\(minutes):\(seconds)"
         
         
     }
@@ -49,7 +49,7 @@ class ScoreViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     
+        
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "HighScoreCell") as?HighScoreTableViewCell
         let seconds = String(format:"%02d", (highScoreList[indexPath.row].timer % 60))
         let minutes = String(format:"%02d", (highScoreList[indexPath.row].timer / 60))
@@ -70,14 +70,14 @@ class ScoreViewController: UIViewController, UITableViewDataSource, UITableViewD
     //MARK: UserDefaults Functions
     func readFromUserDF()-> [HighScoreCellUtil]{
         if let data = UserDefaults.standard.data(forKey: dataID){
-        do{
-            let JSONdecoder = JSONDecoder()
-            self.highScoreList =
-                try
-                    JSONdecoder.decode([HighScoreCellUtil].self, from: data)
-            return self.highScoreList
-        }catch{
-            print("can't read from UserDefaults")
+            do{
+                let JSONdecoder = JSONDecoder()
+                self.highScoreList =
+                    try
+                        JSONdecoder.decode([HighScoreCellUtil].self, from: data)
+                return self.highScoreList
+            }catch{
+                print("can't read from UserDefaults")
             }
             
         }
@@ -90,7 +90,7 @@ class ScoreViewController: UIViewController, UITableViewDataSource, UITableViewD
             let data =
                 try
                     JSONencoder.encode(highScoreListarray)
-                    UserDefaults.standard.set(data, forKey: dataID)
+            UserDefaults.standard.set(data, forKey: dataID)
             self.highScoreList = readFromUserDF()
         }catch{
             print("can't write to UserDefaults")
@@ -116,19 +116,19 @@ class ScoreViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         
     }
-
-
+    
+    
     @IBAction func clickedBack(_ sender: Any) {
         self.performSegue(withIdentifier: "BackToMain", sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    
-    
-    if (segue.identifier=="BackToMain") {
-        _ = segue.destination as! WelcomeViewController
-    
+        
+        
+        if (segue.identifier=="BackToMain") {
+            _ = segue.destination as! WelcomeViewController
+            
+        }
     }
-}
 }
 
 //MARK: Inner Class

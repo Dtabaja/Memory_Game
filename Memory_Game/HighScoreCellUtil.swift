@@ -1,10 +1,3 @@
-//
-//  HighScoreTable.swift
-//  Memory_Game
-//
-//  Created by user167528 on 6/13/20.
-//  Copyright © 2020 user167528. All rights reserved.
-//
 
 import Foundation
 
@@ -32,7 +25,7 @@ class HighScoreCellUtil: Codable{
         formatter.timeStyle = .medium
         formatter.locale = .current
         return formatter.string(from: now)
-       
+        
     }
     
 }
