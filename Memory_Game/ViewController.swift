@@ -15,6 +15,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var timerLabel: UILabel!
     
     @IBOutlet weak var StepsCounter: UILabel!
+    @IBOutlet weak var Back_BTN: UIButton!
     
     var model = ModelCard()
     var myCardArray = [Card]()
@@ -173,9 +174,25 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if(segue.identifier=="FromGameToToepTen"){
             let vc = segue.destination as! ScoreViewController
             vc.highScoreCell = self.highScoreCell
+            if (segue.identifier=="BackToMainFromGame") {
+                     _ = segue.destination as! WelcomeViewController
+                 
+                 }
+            
         }
+        
+        
+        
     }
-   
+    
+    
+    @IBAction func BackedCliced(_ sender: Any) {
+        self.performSegue(withIdentifier: "BackToMainFromGame", sender: self)
+    }
+    
+      
+
+    
     
     //  MARK: UICollcetionView  Methods
     

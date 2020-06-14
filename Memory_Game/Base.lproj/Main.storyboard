@@ -96,6 +96,24 @@
                                     <constraint firstAttribute="bottom" secondItem="580-nA-wLp" secondAttribute="bottom" id="qlt-PQ-gtN"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hE9-ei-Vq8">
+                                <rect key="frame" x="0.0" y="0.0" width="64" height="37"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="&lt;Back">
+                                            <attributes>
+                                                <color key="NSColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="22" name="Avenir-Black"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="BackedCliced:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oiR-H3-iXZ"/>
+                                    <action selector="clickedBack:" destination="YXp-sd-m4s" eventType="touchUpInside" id="Q3C-Y7-EyT"/>
+                                    <segue destination="tXw-lU-SHu" kind="show" identifier="BackToMainFromGame" id="okh-yB-Q4t"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -104,17 +122,20 @@
                             <constraint firstItem="Tu9-nK-Mgs" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="DD6-YG-gT2"/>
                             <constraint firstItem="Nkr-LY-9Us" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="J6u-fw-4yy"/>
                             <constraint firstItem="Nkr-LY-9Us" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="N50-Sr-ka3"/>
+                            <constraint firstItem="hE9-ei-Vq8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="TqQ-Ss-4m7"/>
                             <constraint firstAttribute="bottom" secondItem="Nkr-LY-9Us" secondAttribute="bottom" id="UD9-1W-AtT"/>
                             <constraint firstAttribute="bottom" secondItem="Nkr-LY-9Us" secondAttribute="bottom" id="UfW-R9-hDi"/>
                             <constraint firstItem="Tu9-nK-Mgs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="fLJ-Dr-3Ek"/>
                             <constraint firstItem="Nkr-LY-9Us" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gb8-0K-o3I"/>
+                            <constraint firstItem="hE9-ei-Vq8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hOE-rC-KLg"/>
                             <constraint firstItem="Tu9-nK-Mgs" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="mqZ-BW-j5A"/>
                             <constraint firstAttribute="trailing" secondItem="Nkr-LY-9Us" secondAttribute="trailing" id="olp-tH-CRC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="dWv-92-OLg"/>
+                    <navigationItem key="navigationItem" id="Lgy-9f-kAo"/>
                     <connections>
+                        <outlet property="Back_BTN" destination="hE9-ei-Vq8" id="b3K-zk-FE3"/>
                         <outlet property="StepsCounter" destination="lUg-Dq-72z" id="dMA-yg-huQ"/>
                         <outlet property="collectionView" destination="580-nA-wLp" id="GEb-gY-oW2"/>
                         <outlet property="timerLabel" destination="FaN-Gn-4Rz" id="gdE-9L-88o"/>
@@ -123,7 +144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="265" y="-190"/>
+            <point key="canvasLocation" x="263.768115942029" y="-190.17857142857142"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="H9R-1d-xVV">
@@ -183,6 +204,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oY8-Si-ixd"/>
                     </view>
+                    <navigationItem key="navigationItem" id="fjq-uz-g7D"/>
                     <connections>
                         <outlet property="PlayButton" destination="SyL-PT-0Tv" id="R4b-Fo-Ddh"/>
                         <outlet property="topTenButton" destination="u79-9i-jyd" id="WgV-hF-YIo"/>
@@ -329,6 +351,7 @@
         <image name="Background_world" width="888" height="1600"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mjG-Bb-vU7"/>
+        <segue reference="77w-m9-NKd"/>
+        <segue reference="okh-yB-Q4t"/>
     </inferredMetricsTieBreakers>
 </document>

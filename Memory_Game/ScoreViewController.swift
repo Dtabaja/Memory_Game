@@ -20,6 +20,7 @@ class ScoreViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.dataSource = self
         tableView.reloadData()
         showHighScoreTable()
+        showLocation()
     }
     
     //MARK: location annotation on map
@@ -54,7 +55,7 @@ class ScoreViewController: UIViewController, UITableViewDataSource, UITableViewD
         let minutes = String(format:"%02d", (highScoreList[indexPath.row].timer / 60))
         cell?.time_Label.text = "\(minutes):\(seconds)"
         cell?.date_Label.text = String(highScoreList[indexPath.row].dateOfGame)
-        showLocation()
+        
         return cell!
     }
     
